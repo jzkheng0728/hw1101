@@ -37,6 +37,16 @@ def account():
 		result = "您輸入的帳號是：" + user + "; 密碼為：" + pwd
 		return result
 
+@app.route("/read")
+def read():
+    Result = ""     
+    collection_ref = db.collection("靜宜資管")    
+    docs = collection_ref.order_by("mail", direction=firestore.Query.DESCENDING).get()    
+    for doc in docs:         
+        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
+    return Result
+
+
 	else:
 		return render_template("acc.html")
 
