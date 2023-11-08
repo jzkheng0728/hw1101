@@ -51,7 +51,7 @@ def read5():
     return Result
 
 @app.route("/account", methods=["GET", "POST"])
-def account():
+def input():
 	if request.method == "POST":
 		user = request.form["keyword"]
 		result = "您輸入的帳號是：" + keyword
