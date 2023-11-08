@@ -49,12 +49,30 @@ def read5():
         Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
     return Result
 
-@app.route("/account", methods=["GET", "POST"])
+@app.route("/input", methods=["GET", "POST"])
 def input():
 	if request.method == "POST":
 		user = request.form["keyword"]
 		result = "您輸入的帳號是：" + keyword
 		return result
+	else:
+		return render_template("input.html")
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    if request.method == "POST":
+		user = request.form["keyword"]
+		result = "您輸入的帳號是：" + keyword
+
+		Result += "<br>"
+		db = firestore.client()
+		collection_ref = db.collection("人選之人─造浪者")
+		docs = collection_ref.order_by("birth").get()    
+   		for doc in docs:
+   			x = doc.to_dict()
+   			if keyword in x["name"]
+				Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
+			return result
 	else:
 		return render_template("input.html")
 
