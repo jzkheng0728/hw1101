@@ -16,6 +16,7 @@ def index():
 	X +="<a href=/account>表单传值</a><br>"
 	X += "<br><a href=/read>讀取Firestore資料</a><br>"
 	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
+	X += "<br><a href=/read5>演员关键字查询</a><br>"
 	return X
 
 @app.route("/db")
@@ -39,6 +40,17 @@ def account():
 	else:
 		return render_template("acc.html")
 
+
+@app.route("/read5")
+def read():
+    Result = ""     
+    db = firestore.client()
+    collection_ref = db.collection("邓佳钲")    
+    docs = collection_ref.get()    
+    for doc in docs:         
+        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
+    return Result
+
 @app.route("/read5")
 def read5():
     Result = ""     
@@ -48,6 +60,15 @@ def read5():
     for doc in docs:         
         Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
     return Result
+
+@app.route("/account", methods=["GET", "POST"])
+def account():
+	if request.method == "POST":
+		user = request.form["keyword"]
+		result = "您輸入的帳號是：" + keyword
+		return result
+	else:
+		return render_template("acc.html")
 
 #if __name__ == "__main__":
 	#app.run()
