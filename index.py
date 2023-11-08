@@ -16,7 +16,7 @@ def index():
 	X +="<a href=/account>表单传值</a><br>"
 	X += "<br><a href=/read>讀取Firestore資料</a><br>"
 	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
-	X += "<br><a href=/read5>演员关键字查询</a><br>"
+	X += "<br><a href=/read5>演员姓名关键字</a><br>"
 	return X
 
 @app.route("/db")
@@ -40,7 +40,6 @@ def account():
 	else:
 		return render_template("acc.html")
 
-
 @app.route("/read5")
 def read5():
     Result = ""     
@@ -58,7 +57,8 @@ def account():
 		result = "您輸入的帳號是：" + keyword
 		return result
 	else:
-		return render_template("acc.html")
+		return render_template("input.html")
+
 
 #if __name__ == "__main__":
 	#app.run()
