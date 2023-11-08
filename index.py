@@ -62,7 +62,7 @@ def input():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     if request.method == "POST":
-    	keyword = request.form["user"]
+    	keyword = request.form["keyword"]
     	result = "您輸入的帳號是：" + keyword
     	Result += "<br>"
     	db = firestore.client()
