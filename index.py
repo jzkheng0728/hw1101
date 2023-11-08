@@ -42,16 +42,6 @@ def account():
 
 
 @app.route("/read5")
-def read():
-    Result = ""     
-    db = firestore.client()
-    collection_ref = db.collection("邓佳钲")    
-    docs = collection_ref.get()    
-    for doc in docs:         
-        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
-    return Result
-
-@app.route("/read5")
 def read5():
     Result = ""     
     db = firestore.client()
