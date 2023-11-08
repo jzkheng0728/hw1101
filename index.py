@@ -64,18 +64,17 @@ def search():
     if request.method == "POST":
     	keyword = request.form["user"]
     	result = "您輸入的帳號是：" + keyword
-
-		Result += "<br>"
-		db = firestore.client()
-		collection_ref = db.collection("人選之人─造浪者")
-		docs = collection_ref.order_by("birth").get()    
-	   	for doc in docs:
-	   		x = doc.to_dict()
-	   		if keyword in x["name"]
-				Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
-		return result
-	else:
-		return render_template("search.html")
+    	Result += "<br>"
+    	db = firestore.client()
+    	collection_ref = db.collection("人選之人─造浪者")
+    	docs = collection_ref.order_by("birth").get()
+    	for doc in docs:
+    		x = doc.to_dict()
+    		if keyword in x["name"]
+    		Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
+    	return result
+    else:
+    	return render_template("search.html")
 
 
 #if __name__ == "__main__":
