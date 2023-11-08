@@ -63,7 +63,7 @@ def input():
 def search():
     if request.method == "POST":
     	keyword = request.form["keyword"]
-    	result = "您輸入的帳號是：" + keyword
+    	Result = "您輸入的帳號是：" + keyword
     	Result += "<br>"
     	db = firestore.client()
     	collection_ref = db.collection("人選之人─造浪者")
@@ -72,7 +72,7 @@ def search():
     		x = doc.to_dict()
     		if keyword in x["name"]:
     			Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
-    	return result
+    	return Result
     else:
     	return render_template("search.html")
 
