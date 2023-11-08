@@ -4,7 +4,6 @@ cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
 
-
 from flask import Flask, render_template, request
 from datetime import datetime,timezone,timedelta
 app = Flask(__name__)
@@ -45,7 +44,7 @@ def read5():
     Result = ""     
     db = firestore.client()
     collection_ref = db.collection("人選之人─造浪者")    
-    docs = collection_ref.order_by.get()    
+    docs = collection_ref.get()    
     for doc in docs:         
         Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
     return Result
