@@ -71,7 +71,7 @@ def search():
     	for doc in docs:
     		x = doc.to_dict()
     		if keyword in x["name"]
-    		Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
+    			Result += "演员：" + x["name"] + ",在剧中扮演" + x["role"] + ",出生于" + str(x["birth"]) + "<br>"
     	return result
     else:
     	return render_template("search.html")
