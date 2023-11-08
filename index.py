@@ -14,7 +14,6 @@ def index():
 	X += "<a href=/db>课程</a><br>"
 	X +="<a href=/khen?nick=khen>个人简介</a><br>"
 	X +="<a href=/account>表单传值</a><br>"
-	X += "<br><a href=/read>讀取Firestore資料</a><br>"
 	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
 	X += "<br><a href=/read5>演员姓名关键字</a><br>"
 	return X
