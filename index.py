@@ -15,7 +15,7 @@ def index():
 	X +="<a href=/khen?nick=khen>个人简介</a><br>"
 	X +="<a href=/account>表单传值</a><br>"
 	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
-	X += "<br><a href=/read5>演员姓名关键字</a><br>"
+	X += "<br><a href=/input>演员姓名关键字</a><br>"
 	return X
 
 @app.route("/db")
