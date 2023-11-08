@@ -16,6 +16,7 @@ def index():
 	X +="<a href=/khen?nick=khen>个人简介</a><br>"
 	X +="<a href=/account>表单传值</a><br>"
 	X += "<br><a href=/read>讀取Firestore資料</a><br>"
+	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
 	return X
 
 @app.route("/db")
@@ -39,8 +40,8 @@ def account():
 	else:
 		return render_template("acc.html")
 
-@app.route("/read")
-def read():
+@app.route("/read5")
+def read5():
     Result = ""     
     db = firestore.client()
     collection_ref = db.collection("人選之人─造浪者")    
