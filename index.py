@@ -17,6 +17,7 @@ def index():
 	X += "<br><a href=/read5>人選之人─造浪者</a><br>"
 	X += "<br><a href=/input>演员姓名关键字</a><br>"
 	X += "<br><a href=/search>演员查询</a><br>"
+	X += "<br><a href=/lib>圖書精選</a><br>"
 	return X
 
 @app.route("/db")
@@ -75,6 +76,17 @@ def search():
     	return Result
     else:
     	return render_template("search.html")
+
+@app.route("/lib")
+def lib():
+    Result = ""     
+    db = firestore.client()
+    collection_ref = db.collection("圖書精選")    
+    docs = collection_ref.order_by("anniversary")get()    
+    for doc in docs:         
+        Result += "书名：" + x["title"] + "<br>"  
+        Result += "作者：" + x["author"] + "<br><br>"   
+    return Result
 
 
 #if __name__ == "__main__":
