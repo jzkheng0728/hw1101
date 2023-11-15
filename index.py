@@ -83,11 +83,12 @@ def lib():
     db = firestore.client()
     collection_ref = db.collection("圖書精選")    
     docs = collection_ref.order_by("anniversary").get()    
-    for doc in docs:         
+    for doc in docs:
+    	x = doc.to_dict()         
         Result += "书名：" + x["title"] + "<br>"  
         Result += "作者：" + x["author"] + "<br><br>"   
     return Result
 
 
-#if __name__ == "__main__":
-	#app.run()
+if __name__ == "__main__":
+	app.run(debug=True)
