@@ -94,23 +94,23 @@ def lib():
 
 @app.route("/search2", methods=["GET", "POST"])
 def search2():
-    if request.method == "POST":
-    	keyword = request.form["keyword"]
-    	Result = "您輸入的帳號是：" + keyword
-    	Result += "<br>"
-    	db = firestore.client()
-    	collection_ref = db.collection("圖書精選")
-    	docs = collection_ref.order_by("anniversary").get()
-    	for doc in docs:
-    		x = doc.to_dict()
+	if request.method == "POST":
+		keyword = request.form["keyword"]
+		Result = "您輸入的帳號是：" + keyword
+		Result += "<br>"
+		db = firestore.client()
+		collection_ref = db.collection("圖書精選")
+		docs = collection_ref.order_by("anniversary").get()
+		for doc in docs:
+			x = doc.to_dict()
 				if keyword in x["name"]:
 				Result += "书名:<a href=" + x["url"] + ">" + x["title"] + "</a><br>"
 				Result += "作者:" + x["author"] + "<br>"
-				Result += str(x["anniversary"]) + "周年纪念版" + "<br>" 
-				Result += "<img src=" + x["cover"] + "></img><br><br>" 
-    	return Result
-    else:
-    	return render_template("search2.html")
+				Result += str(x["anniversary"]) + "周年纪念版" + "<br>"
+				Result += "<img src=" + x["cover"] + "></img><br><br>"
+		return Result
+	else:
+		return render_template("search2.html")
 
 
 if __name__ == "__main__":
