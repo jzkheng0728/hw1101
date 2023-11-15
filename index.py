@@ -85,7 +85,7 @@ def lib():
     docs = collection_ref.order_by("anniversary").get()    
     for doc in docs:
     	x = doc.to_dict()
-        Result += "书名:<a href" + x["url"] + ">" + x["title"] + "</a><br>"  
+        Result += "书名:<a href=" + x["url"] + ">" + x["title"] + "</a><br>"  
         Result += "作者:" + x["author"] + "<br>"
         Result += str(x["anniversary"]) + "周年纪念版" + "<br>" 
         Result += "<img src=" + x["cover"] + "></img><br><br>" 
