@@ -124,9 +124,9 @@ def spider():
 	result=sp.select(".team-box")
 	info = ""
 	for x in result:
-		info += x.text + "<br>"
+		info += "<a href=" + x.find("a").get("href") + x.text + "</a><br>"
 		info += x.find("a").get("href") + "<br>"
-		info += "https://www1.pu.edu.tw/~tcyang/" + x.find("img").get("src") + "<br><br>"
+		info += "<img src=https://www1.pu.edu.tw/~tcyang/" + x.find("img").get("src") + "></img><br><br>"
 
 	return info
 
