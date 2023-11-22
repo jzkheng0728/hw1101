@@ -18,6 +18,7 @@ def index():
 	X += "<br><a href=/input>演员姓名关键字</a><br>"
 	X += "<br><a href=/search>演员查询</a><br>"
 	X += "<br><a href=/lib>圖書精選</a><br>"
+	X += "<br><a href=/spider>老师课程</a><br>"
 	return X
 
 @app.route("/db")
@@ -111,6 +112,23 @@ def search2():
 		return Result
 	else:
 		return render_template("search2.html")
+
+@app.route("/spider")
+def spider():
+
+	url = "https://www1.pu.edu.tw/~tcyang/course.html"
+	Data = requests.get(url)
+	Data.encoding = "utf-8"
+
+	sp = BeautifulSoup(Data.text, "html.parser")
+	result=sp.select(".team-box")
+	info = ""
+	for x in result:
+		info += x.text + "<br>"
+		info += x.find("a").get("href") + "<br>"
+		info += "https://www1.pu.edu.tw/~tcyang/" + x.find("img").get("src") + "<br><br>"
+
+	return info
 
 
 if __name__ == "__main__":
