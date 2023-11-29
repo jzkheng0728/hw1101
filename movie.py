@@ -12,4 +12,15 @@ for x in result:
 	#print(x.find(class_="filmtitle").text)
 	print(x.find("img").get("src").replace("  ","  "))
 	print("http://www.atmovies.com.tw" + x.find("a").get("href"))
+
+
+	if x.find(class_="runtime").find("a") != None:
+		print(x.find(class_="runtime").find("a").text)
+	else:
+		print(x.find(class_="runtime").text.replace("上映日期：",""))
+
+	if x.find(class_="runtime").find("img") != None:
+		print("http://www.atmovies.com.tw/" + x.find(class_="runtime").find("img").get("src"))
+	
 	print()
+	print("更新時間：2023/11/27 18:58")
