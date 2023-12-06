@@ -181,7 +181,7 @@ def search3():
 			info += "上映日期：" + doc.to_dict()["showDate"] + "<br><br>"
 	return info
 
-@app.route("/data")
+@app.route("/data",methods=["POST","GET"])
 def data():
 	url = "https://datacenter.taichung.gov.tw/swagger/OpenData/db36e286-1d2b-4784-99b9-3b0790dd9652"
 	Data = requests.get(url)
