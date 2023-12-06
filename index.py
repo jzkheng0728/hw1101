@@ -193,11 +193,11 @@ def data():
 		for item in JsonData:
 			if Road in item["路口名稱"]:
 				Result += item["路口名稱"] + "：發生" + item["總件數"] + "件，主因是" + item["主要肇因"] + "<br>"
-			if Result == "":
-				Result = "抱歉，查無相關資料！"
-				return Result
-			else:
-				return render_template("data.html")
-				
+				if Result == "":
+					Result = "抱歉，查無相關資料！"
+					return Result
+				else:
+					return render_template("road.html")
+
 if __name__ == "__main__":
 	app.run(debug=True)
