@@ -197,7 +197,7 @@ def data():
 					Result = "抱歉，查無相關資料！"
 					return Result
 				else:
-					return render_template("road.html")
+					return render_template("data.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)
