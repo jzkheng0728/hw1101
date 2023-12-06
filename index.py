@@ -1,4 +1,4 @@
-import requests
+import requests, json
 from bs4 import BeautifulSoup
 
 import firebase_admin
@@ -194,9 +194,9 @@ def data():
 				Result += item["路口名稱"] + "：發生" + item["總件數"] + "件，主因是" + item["主要肇因"] + "<br>"
 			if Result == "":
 				Result = "抱歉，查無相關資料！"
-			return Result
-		else:
-			return render_template("data.html")
+		return Result
+	else:
+		return render_template("data.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)
